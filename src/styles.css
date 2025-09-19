@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  font-family: 'Fira Code', monospace;
+  background: #0a0a0a;
+  color: #ffffff;
+}
+
+.app {
+  max-width: 1000px;
+  margin: auto;
+  padding: 2rem;
+}
+
+header, section {
+  margin: 3rem 0;
+}
+
+h1, h2 {
+  color: #ff6b35; /* orange highlight */
+}
+
+p, li {
+  color: #dcdcdc;
+  line-height: 1.6;
+}
+
+ul {
+  padding-left: 1.2rem;
+}
+
+a {
+  color: #ff6b35;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem 0;
+  border-top: 1px solid #333;
+  margin-top: 4rem;
+}
