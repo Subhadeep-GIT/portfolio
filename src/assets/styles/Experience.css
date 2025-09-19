@@ -1,0 +1,17 @@
+.job, .edu {
+  margin-bottom: 1rem;
+}
+
+.job-title, .edu-title {
+  font-weight: 600;
+}
+
+.job-company, .edu-institute {
+  color: #57606a;
+  font-size: 0.95rem;
+}
+
+.job-duration, .edu-duration {
+  color: #6a737d;
+  font-size: 0.85rem;
+}

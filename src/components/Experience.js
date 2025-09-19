@@ -2,8 +2,10 @@ import React from "react";
 
 function Experience() {
   return (
-    <section>
+    <section className="animate__animated animate__fadeInUp">
+      <i className="fa-solid fa-briefcase section-icon"></i>
       <h2>Work Experience</h2>
+
       <h3>Support Engineer | Apollo Tyres LTD, Limda Plant, Vadodara</h3>
       <p><i>Dec 2021 - Apr 2023</i></p>
       <ul>

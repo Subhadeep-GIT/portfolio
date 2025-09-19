@@ -1,0 +1,147 @@
+/* ==========================
+   Reset & Base
+========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f6f8fa;
+  color: #24292e;
+  line-height: 1.6;
+}
+
+a {
+  color: #0366d6;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.app {
+  max-width: 1000px;
+  margin: auto;
+  padding: 2rem 1rem;
+}
+
+/* ==========================
+   Layout Grid
+========================== */
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* ==========================
+   Card-style sections
+========================== */
+section {
+  background-color: #f0f2f5;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+section:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+section h2 {
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  font-size: 1.4rem;
+  color: #24292e;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #d1d5da;
+  padding-bottom: 0.3rem;
+}
+
+/* ==========================
+   Lists
+========================== */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul li {
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
+}
+
+/* ==========================
+   Skills/Tags
+========================== */
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skills-list span {
+  background-color: #e1e4e8;
+  padding: 0.3rem 0.7rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ==========================
+   Experience / Education
+========================== */
+.job, .edu {
+  margin-bottom: 1rem;
+}
+
+.job-title, .edu-title {
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+}
+
+.job-company, .edu-institute {
+  color: #57606a;
+  font-size: 0.95rem;
+}
+
+.job-duration, .edu-duration {
+  color: #6a737d;
+  font-size: 0.85rem;
+}
+
+/* ==========================
+   Footer
+========================== */
+footer {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 0.85rem;
+  color: #57606a;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ==========================
+   Responsive Grid
+========================== */
+@media (min-width: 768px) {
+  .main-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .app {
+    padding: 1rem;
+  }
+
+  section {
+    padding: 1rem;
+  }
+}

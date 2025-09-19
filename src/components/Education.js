@@ -1,21 +1,23 @@
 import React from "react";
+import "../assets/styles/Experience.css";
 
 function Education() {
   return (
-    <section>
+    <section className="animate__animated animate__fadeInUp">
+      <i className="fa-solid fa-graduation-cap section-icon"></i>
       <h2>Education</h2>
       <ul>
         <li>
-          <b>Bachelor’s Degree in Computer Science and Engineering</b> <br />
-          Parul University, Vadodara (Expected 2026)
+          <strong>Bachelor’s Degree in Computer Science and Engineering</strong><br />
+          Parul University, Vadodara, Gujarat (Expected: 2026)
         </li>
         <li>
-          <b>Diploma in Computer Science and Engineering</b> <br />
-          Parul University, Vadodara (Completed 2023)
+          <strong>Diploma in Computer Science and Engineering</strong><br />
+          Parul University, Vadodara, Gujarat (Completed: 2023)
         </li>
         <li>
-          <b>Matriculation</b> <br />
-          Ursuline Convent School, Ranchi, Jharkhand
+          <strong>Matriculation</strong><br />
+          Ursuline Convent School, Muri
         </li>
       </ul>
     </section>

@@ -2,7 +2,8 @@ import React from "react";
 
 function Achievements() {
   return (
-    <section>
+    <section className="animate__animated animate__fadeInUp">
+      <i className="fa-solid fa-trophy section-icon"></i>
       <h2>Achievements</h2>
       <ul>
         <li>Developed strong communication and leadership skills.</li>

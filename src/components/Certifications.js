@@ -2,7 +2,8 @@ import React from "react";
 
 function Certifications() {
   return (
-    <section>
+    <section className="animate__animated animate__fadeInUp">
+      <i className="fa-solid fa-certificate section-icon"></i>
       <h2>Certifications</h2>
       <ul>
         <li>Cisco Networking Certificate</li>

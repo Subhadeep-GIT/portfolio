@@ -1,9 +1,10 @@
 import React from "react";
+import "../assets/styles/Footer.css";
 
 function Footer() {
   return (
     <footer>
-      <p>© {new Date().getFullYear()} Subhadeep Ghosh | Built with React</p>
+      &copy; {new Date().getFullYear()} Subhadeep Ghosh | Built with React
     </footer>
   );
 }
