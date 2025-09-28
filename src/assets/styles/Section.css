@@ -1,0 +1,26 @@
+section {
+  background-color: #f0f2f5;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+section:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+section h2 {
+  font-size: 1.3rem;
+  color: #24292e;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #d1d5da;
+  padding-bottom: 0.3rem;
+}
+
+@media (max-width: 500px) {
+  section {
+    padding: 1rem;
+  }
+}

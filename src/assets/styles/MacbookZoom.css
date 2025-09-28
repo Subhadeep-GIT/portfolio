@@ -1,0 +1,56 @@
+.zoom-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  perspective: 1200px;
+}
+
+.macbook-wrapper {
+  position: relative;
+  cursor: pointer;
+  transform-origin: center center;
+}
+
+.macbook-img {
+  width: 400px;
+  transition: filter 0.4s;
+}
+.macbook-wrapper:hover .macbook-img {
+  filter: brightness(1.05);
+}
+
+.resume-overlay {
+  position: absolute;
+  top: 14%;   /* adjust to match MacBook screen */
+  left: 12%;  /* adjust to match MacBook screen */
+  width: 76%; /* MacBook screen area */
+  height: 62%;
+  background: white;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(0,0,0,0.25);
+}
+
+.resume-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #ff6b35;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 10;
+}
+.close-btn:hover {
+  background: #e55a2c;
+}
