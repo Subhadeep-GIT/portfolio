@@ -40,13 +40,31 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    toast({
-      title: "🚧 Contact Form",
-      description: "This feature isn't implemented yet—but don't worry! You can request it in your next prompt! 🚀"
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
     });
-  };
+
+    if (response.ok) {
+      toast({
+        title: "✅ Message Sent",
+        description: "Thank you! Your message has been delivered.",
+      });
+      setFormData({ name: '', email: '', subject: '', message: '' }); // reset form
+    } else {
+      throw new Error('Failed to send message');
+    }
+  } catch (err) {
+    toast({
+      title: "❌ Error",
+      description: "Something went wrong. Please try again later.",
+    });
+  }
+};
 
   const handleSocialClick = (platform) => {
     toast({
