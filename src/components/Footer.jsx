@@ -4,8 +4,13 @@ import { Heart } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const buildDate = process.env.NEXT_PUBLIC_BUILD_DATE || new Date().toISOString().split('T')[0];
-  const lastCommit = process.env.NEXT_PUBLIC_LAST_COMMIT || buildDate;
+
+  const buildDate = new Date(process.env.NEXT_PUBLIC_BUILD_DATE || new Date());
+  const lastCommit = new Date(process.env.NEXT_PUBLIC_LAST_COMMIT || buildDate);
+
+  // Format date & time nicely
+  const formatDateTime = (date) =>
+    date.toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' });
 
   return (
     <footer className="py-6 px-4 border-t border-purple-500/20">
@@ -25,7 +30,7 @@ const Footer = () => {
           </p>
 
           <p className="text-gray-400 text-xs sm:text-sm">
-            Last build: {buildDate} | Last commit: {lastCommit}
+            Last build: {formatDateTime(buildDate)} | Last commit: {formatDateTime(lastCommit)}
           </p>
         </motion.div>
       </div>
