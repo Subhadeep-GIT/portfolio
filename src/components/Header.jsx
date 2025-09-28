@@ -10,31 +10,29 @@ const DynamicTitle = () => {
     'from-green-400 to-emerald-400'
   ];
 
-  const [currentText, setCurrentText] = useState(0);
-  const [currentGradient, setCurrentGradient] = useState(0);
+  const [currentText, setCurrentText] = React.useState(0);
+  const [currentGradient, setCurrentGradient] = React.useState(0);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const interval = setInterval(() => {
       setCurrentText(prev => (prev + 1) % texts.length);
       setCurrentGradient(prev => (prev + 1) % gradients.length);
-    }, 3000); // change every 3 seconds
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="text-2xl font-bold h-10 overflow-hidden relative cursor-pointer">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={texts[currentText]}
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -20, opacity: 0 }}
-          transition={{ duration: 0.6 }}
-          className={`absolute bg-gradient-to-r ${gradients[currentGradient]} bg-clip-text text-transparent`}
-        >
-          {texts[currentText]}
-        </motion.div>
-      </AnimatePresence>
+    <div className="relative h-10 flex items-center overflow-hidden cursor-pointer">
+      <motion.div
+        key={texts[currentText]}
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: -20, opacity: 0 }}
+        transition={{ duration: 0.6 }}
+        className={`w-full bg-gradient-to-r ${gradients[currentGradient]} bg-clip-text text-transparent font-bold text-2xl`}
+      >
+        {texts[currentText]}
+      </motion.div>
     </div>
   );
 };
