@@ -1,15 +1,50 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+
+const DynamicTitle = () => {
+  const texts = ['Subhadeep Ghosh', 'Full Stack Developer'];
+  const gradients = [
+    'from-purple-400 to-pink-400',
+    'from-blue-400 to-cyan-400',
+    'from-green-400 to-emerald-400'
+  ];
+
+  const [currentText, setCurrentText] = useState(0);
+  const [currentGradient, setCurrentGradient] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentText(prev => (prev + 1) % texts.length);
+      setCurrentGradient(prev => (prev + 1) % gradients.length);
+    }, 3000); // change every 3 seconds
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="text-2xl font-bold h-10 overflow-hidden relative cursor-pointer">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={texts[currentText]}
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -20, opacity: 0 }}
+          transition={{ duration: 0.6 }}
+          className={`absolute bg-gradient-to-r ${gradients[currentGradient]} bg-clip-text text-transparent`}
+        >
+          {texts[currentText]}
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
+};
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -24,9 +59,7 @@ const Header = () => {
 
   const scrollToSection = (href) => {
     const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
     setIsMobileMenuOpen(false);
   };
 
@@ -35,27 +68,25 @@ const Header = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-slate-900/95 backdrop-blur-md shadow-lg' 
-          : 'bg-transparent'
+        isScrolled ? 'bg-slate-900/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
       }`}
     >
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
+          {/* Dynamic Title */}
           <motion.div
-          whileHover={{ scale: 1.05 }}
-          onClick={() => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            setIsMobileMenuOpen(false);
-          }}
-          className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent cursor-pointer"
-        >
-          Subhadeep
-        </motion.div>
+            whileHover={{ scale: 1.05 }}
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              setIsMobileMenuOpen(false);
+            }}
+          >
+            <DynamicTitle />
+          </motion.div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
+            {navItems.map(item => (
               <motion.button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
@@ -84,7 +115,7 @@ const Header = () => {
             animate={{ opacity: 1, y: 0 }}
             className="md:hidden mt-4 bg-slate-800/95 backdrop-blur-md rounded-lg p-4"
           >
-            {navItems.map((item) => (
+            {navItems.map(item => (
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
