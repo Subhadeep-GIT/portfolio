@@ -41,41 +41,56 @@ const Contact = () => {
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  try {
-    const response = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
-
-    if (response.ok) {
-      toast({
-        title: "✅ Message Sent",
-        description: "Thank you! Your message has been delivered.",
+    e.preventDefault();
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
       });
-      setFormData({ name: '', email: '', subject: '', message: '' }); // reset form
-    } else {
-      throw new Error('Failed to send message');
+
+      if (response.ok) {
+        toast({
+          title: "✅ Message Sent",
+          description: "Thank you! Your message has been delivered."
+        });
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (err) {
+      toast({
+        title: "❌ Error",
+        description: "Something went wrong. Please try again later."
+      });
     }
-  } catch (err) {
-    toast({
-      title: "❌ Error",
-      description: "Something went wrong. Please try again later.",
-    });
-  }
-};
+  };
 
   const handleSocialClick = (platform) => {
-    toast({
-      title: "🚧 Social Link",
-      description: "This feature isn't implemented yet—but don't worry! You can request it in your next prompt! 🚀"
-    });
+    let url = '';
+
+    switch (platform) {
+      case 'github':
+        url = 'https://github.com/Subhadeep-GIT';
+        break;
+      case 'linkedin':
+        url = 'https://www.linkedin.com/in/subhadeep-ghosh-atl/';
+        break;
+      default:
+        toast({
+          title: "🚧 Social Link",
+          description: "This feature isn't implemented yet—but don't worry! 🚀"
+        });
+        return;
+    }
+
+    window.open(url, '_blank');
   };
 
   return (
     <section id="contact" className="py-20 px-6 bg-slate-900/50">
       <div className="container mx-auto">
+        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -116,9 +131,7 @@ const Contact = () => {
                 >
                   <div className="flex items-center gap-4">
                     <div className={`p-3 rounded-full bg-gradient-to-r ${info.color}`}>
-                      <div className="text-white">
-                        {info.icon}
-                      </div>
+                      <div className="text-white">{info.icon}</div>
                     </div>
                     <div>
                       <p className="text-gray-400 text-sm">{info.label}</p>
@@ -155,76 +168,74 @@ const Contact = () => {
           </motion.div>
 
           {/* Contact Form */}
-<motion.div
-  initial={{ opacity: 0, x: 50 }}
-  whileInView={{ opacity: 1, x: 0 }}
-  transition={{ duration: 0.8 }}
-  viewport={{ once: true }}
->
-  <div className="bg-slate-800/50 backdrop-blur-md rounded-2xl p-8 border border-purple-500/20">
-    <h3 className="text-3xl font-bold text-white mb-8">Send Message</h3>
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <div className="bg-slate-800/50 backdrop-blur-md rounded-2xl p-8 border border-purple-500/20">
+              <h3 className="text-3xl font-bold text-white mb-8">Send Message</h3>
 
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="grid md:grid-cols-2 gap-6">
-        {['name', 'email'].map((field) => (
-          <div key={field}>
-            <label className="block text-gray-300 text-sm font-medium mb-2">
-              {field.charAt(0).toUpperCase() + field.slice(1)}
-            </label>
-            <input
-              type={field === 'email' ? 'email' : 'text'}
-              name={field}
-              value={formData[field]}
-              onChange={handleInputChange}
-              placeholder={
-                field === 'name' ? 'Your Name' : 'your.email@example.com'
-              }
-              className="w-full px-4 py-3 bg-slate-700/50 border border-purple-500/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500/60 transition-colors duration-200"
-              required
-            />
-          </div>
-        ))}
-      </div>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  {['name', 'email'].map((field) => (
+                    <div key={field}>
+                      <label className="block text-gray-300 text-sm font-medium mb-2">
+                        {field.charAt(0).toUpperCase() + field.slice(1)}
+                      </label>
+                      <input
+                        type={field === 'email' ? 'email' : 'text'}
+                        name={field}
+                        value={formData[field]}
+                        onChange={handleInputChange}
+                        placeholder={field === 'name' ? 'Your Name' : 'your.email@example.com'}
+                        className="w-full px-4 py-3 bg-slate-700/50 border border-purple-500/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500/60 transition-colors duration-200"
+                        required
+                      />
+                    </div>
+                  ))}
+                </div>
 
-      {['subject', 'message'].map((field) => (
-        <div key={field}>
-          <label className="block text-gray-300 text-sm font-medium mb-2">
-            {field.charAt(0).toUpperCase() + field.slice(1)}
-          </label>
-          {field === 'subject' ? (
-            <input
-              type="text"
-              name="subject"
-              value={formData.subject}
-              onChange={handleInputChange}
-              placeholder="Subject"
-              className="w-full px-4 py-3 bg-slate-700/50 border border-purple-500/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500/60 transition-colors duration-200"
-              required
-            />
-          ) : (
-            <textarea
-              name="message"
-              value={formData.message}
-              onChange={handleInputChange}
-              rows={6}
-              placeholder="Your message..."
-              className="w-full px-4 py-3 bg-slate-700/50 border border-purple-500/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500/60 transition-colors duration-200 resize-none"
-              required
-            />
-          )}
-        </div>
-      ))}
+                {['subject', 'message'].map((field) => (
+                  <div key={field}>
+                    <label className="block text-gray-300 text-sm font-medium mb-2">
+                      {field.charAt(0).toUpperCase() + field.slice(1)}
+                    </label>
+                    {field === 'subject' ? (
+                      <input
+                        type="text"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleInputChange}
+                        placeholder="Subject"
+                        className="w-full px-4 py-3 bg-slate-700/50 border border-purple-500/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500/60 transition-colors duration-200"
+                        required
+                      />
+                    ) : (
+                      <textarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        rows={6}
+                        placeholder="Your message..."
+                        className="w-full px-4 py-3 bg-slate-700/50 border border-purple-500/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500/60 transition-colors duration-200 resize-none"
+                        required
+                      />
+                    )}
+                  </div>
+                ))}
 
-      <Button
-        type="submit"
-        className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white py-3 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2"
-      >
-        <Send size={20} />
-        Send Message
-      </Button>
-    </form>
-  </div>
-</motion.div>
+                <Button
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white py-3 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2"
+                >
+                  <Send size={20} />
+                  Send Message
+                </Button>
+              </form>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
