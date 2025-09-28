@@ -1,12 +1,12 @@
+/* Import Google Fonts first */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-
+/* Tailwind directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-
+/* Reset and global styles */
 * {
   margin: 0;
   padding: 0;
@@ -19,8 +19,9 @@ html {
 
 body {
   font-family: 'Inter', sans-serif;
-  @apply bg-gradient-to-br from-slate-900 via-purple-900 to-indigo-900 text-white;
   overflow-x: hidden;
+  /* Use @apply inside a selector */
+  @apply bg-gradient-to-br from-slate-900 via-purple-900 to-indigo-900 text-white;
 }
 
 /* Custom scrollbar */
