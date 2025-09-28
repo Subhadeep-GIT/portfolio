@@ -13,10 +13,31 @@ const Hero = () => {
   };
 
   const handleSocialClick = (platform) => {
-    toast({
-      title: "🚧 Social Link",
-      description: "This feature isn't implemented yet—but don't worry! You can request it in your next prompt! 🚀"
-    });
+  switch (platform) {
+    case "github":
+      window.open("https://github.com/Subhadeep-GIT", "_blank");
+      break;
+
+    case "linkedin":
+      window.open("https://www.linkedin.com/in/subhadeep-ghosh-atl/", "_blank");
+      break;
+
+    case "resume":
+      window.open("/Subhadeep-CV.pdf", "_blank"); // assuming CV.pdf is in public folder
+      break;
+
+    case "email":
+      window.open("https://mail.google.com/mail/?view=cm&to=subhadeep051@icloud.com&su=Hello%20Subhadeep&body=I%20found%20your%20portfolio!",
+        "_blank"
+      );
+      break;
+
+    default:
+      toast({
+        title: "🚧 Social Link",
+        description: "This feature isn't implemented yet—but don't worry! 🚀"
+      });
+    }
   };
 
   return (
@@ -89,14 +110,20 @@ const Hero = () => {
               Get In Touch
             </Button>
             
-            <Button
-              onClick={() => handleSocialClick('resume')}
+            <a 
+            href="/Subhadeep-CV.pdf" 
+            download="Subhadeep-CV.pdf" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            >
+              <Button
               variant="outline"
               size="lg"
               className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white px-8 py-3 rounded-full font-semibold transition-all duration-300"
-            >
-              Download Resume
-            </Button>
+              >
+                Downlad Resume
+                </Button>
+            </a>
           </motion.div>
 
           {/* Social Links */}
