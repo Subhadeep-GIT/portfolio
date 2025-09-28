@@ -1,39 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
 const DynamicTitle = () => {
   const texts = ['Subhadeep Ghosh', 'Full Stack Developer'];
-  const gradients = [
-    'from-purple-400 to-pink-400',
-    'from-blue-400 to-cyan-400',
-    'from-green-400 to-emerald-400'
-  ];
+  const gradients = ['from-purple-400 to-pink-400', 'from-blue-400 to-cyan-400'];
 
-  const [currentText, setCurrentText] = React.useState(0);
-  const [currentGradient, setCurrentGradient] = React.useState(0);
+  const [currentText, setCurrentText] = useState(0);
+  const [currentGradient, setCurrentGradient] = useState(0);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentText(prev => (prev + 1) % texts.length);
-      setCurrentGradient(prev => (prev + 1) % gradients.length);
+      setCurrentText((prev) => (prev + 1) % texts.length);
+      setCurrentGradient((prev) => (prev + 1) % gradients.length);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="relative h-10 flex items-center overflow-hidden cursor-pointer">
-      <motion.div
-        key={texts[currentText]}
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        exit={{ y: -20, opacity: 0 }}
-        transition={{ duration: 0.6 }}
-        className={`w-full bg-gradient-to-r ${gradients[currentGradient]} bg-clip-text text-transparent font-bold text-2xl`}
-      >
-        {texts[currentText]}
-      </motion.div>
-    </div>
+    <motion.div
+      key={texts[currentText]}
+      initial={{ y: 20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      exit={{ y: -20, opacity: 0 }}
+      transition={{ duration: 0.6 }}
+      className={`text-2xl md:text-3xl font-bold bg-gradient-to-r ${gradients[currentGradient]} bg-clip-text text-transparent cursor-pointer`}
+    >
+      {texts[currentText]}
+    </motion.div>
   );
 };
 
@@ -71,20 +65,19 @@ const Header = () => {
     >
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          {/* Dynamic Title */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
+          {/* Animated Title */}
+          <div
             onClick={() => {
               window.scrollTo({ top: 0, behavior: 'smooth' });
               setIsMobileMenuOpen(false);
             }}
           >
             <DynamicTitle />
-          </motion.div>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navItems.map(item => (
+            {navItems.map((item) => (
               <motion.button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
@@ -113,7 +106,7 @@ const Header = () => {
             animate={{ opacity: 1, y: 0 }}
             className="md:hidden mt-4 bg-slate-800/95 backdrop-blur-md rounded-lg p-4"
           >
-            {navItems.map(item => (
+            {navItems.map((item) => (
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
