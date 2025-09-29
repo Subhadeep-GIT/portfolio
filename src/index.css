@@ -43,7 +43,7 @@ body {
 
 /* Smooth animations */
 * {
-  transition: all 0.3s ease;
+  transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
 }
 
 /* Focus styles */
@@ -61,8 +61,8 @@ textarea:focus {
 
 /* Glassmorphism effect */
 .glass {
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
