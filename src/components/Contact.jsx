@@ -77,6 +77,12 @@ const Contact = () => {
       case 'linkedin':
         url = 'https://www.linkedin.com/in/subhadeep-ghosh-atl/';
         break;
+      case 'instagram':
+        url = 'https://www.instagram.com/__niikamma__2.0/';
+        break;
+      case 'facebook':
+        url = 'https://www.facebook.com/share/1BUufEuFtY/?mibextid=wwXIfr';
+        break;
       default:
         toast({
           title: "🚧 Social Link",
