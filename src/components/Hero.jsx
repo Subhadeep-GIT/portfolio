@@ -60,7 +60,7 @@ const Hero = () => {
             <img 
               className="relative z-10 w-full h-full rounded-full object-cover border-4 border-white/20"
               alt="Subhadeep Ghosh - Full Stack Developer"
-             src="https://raw.githubusercontent.com/Subhadeep-GIT/portfolio/refs/heads/main/src/assets/images/5009.jpg" />
+             src="https://raw.githubusercontent.com/Subhadeep-GIT/portfolio/refs/heads/main/src/assets/images/5009.jpg?token=GHSAT0AAAAAADLOTFOSSWYOETTDDWG7EVMO2G3N6EQ" />
           </motion.div>
 
           {/* Main Heading */}
