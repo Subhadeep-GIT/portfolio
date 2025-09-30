@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, Github, Linkedin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from '@/components/ui/use-toast';
+import { Instagram, Facebook } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -142,30 +143,30 @@ const Contact = () => {
               ))}
             </div>
 
-            {/* Social Links */}
-            <div className="pt-8">
-              <h4 className="text-xl font-bold text-white mb-4">Connect With Me</h4>
-              <div className="flex gap-4">
-                <motion.button
-                  onClick={() => handleSocialClick('github')}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="p-3 bg-slate-800/50 rounded-full hover:bg-purple-500/20 transition-all duration-300 border border-purple-500/20"
-                >
-                  <Github size={24} className="text-white" />
-                </motion.button>
-                
-                <motion.button
-                  onClick={() => handleSocialClick('linkedin')}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="p-3 bg-slate-800/50 rounded-full hover:bg-purple-500/20 transition-all duration-300 border border-purple-500/20"
-                >
-                  <Linkedin size={24} className="text-white" />
-                </motion.button>
-              </div>
-            </div>
-          </motion.div>
+{/* Social Links */}
+<div className="pt-8">
+  <h4 className="text-xl font-bold text-white mb-4">Connect With Me</h4>
+  <div className="flex gap-4">
+    <motion.button
+      onClick={() => handleSocialClick('instagram')}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
+      className="p-3 bg-slate-800/50 rounded-full hover:bg-purple-500/20 transition-all duration-300 border border-purple-500/20"
+    >
+      <Instagram size={24} className="text-white" />
+    </motion.button>
+
+    <motion.button
+      onClick={() => handleSocialClick('facebook')}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
+      className="p-3 bg-slate-800/50 rounded-full hover:bg-purple-500/20 transition-all duration-300 border border-purple-500/20"
+    >
+      <Facebook size={24} className="text-white" />
+    </motion.button>
+  </div>
+</div>
+</motion.div>
 
           {/* Contact Form */}
           <motion.div
