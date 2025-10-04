@@ -17,13 +17,13 @@ const Contact = () => {
     {
       icon: <Mail size={24} />,
       label: 'Email',
-      value: 'subhadeep051@icloud.com',
+      value: 'contact@subhadeep.space',
       color: 'from-blue-500 to-cyan-500'
     },
     {
       icon: <Phone size={24} />,
       label: 'Phone',
-      value: '9102335613',
+      value: '+91 9102335613',
       color: 'from-green-500 to-emerald-500'
     },
     {
