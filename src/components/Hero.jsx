@@ -27,7 +27,7 @@ const Hero = () => {
       break;
 
     case "email":
-      window.open("https://mail.google.com/mail/?view=cm&to=subhadeep051@icloud.com&su=Hello%20Subhadeep&body=I%20found%20your%20portfolio!",
+      window.open("https://mail.google.com/mail/?view=cm&to=contact@subhadeep.space&su=Hello%20Subhadeep&body=I%20found%20your%20portfolio!",
         "_blank"
       );
       break;
